@@ -5,6 +5,7 @@ import com.example.task2.payload.CardDTO;
 import com.example.task2.payload.CardTransactionDTO;
 import com.example.task2.payload.UserDTO;
 import com.example.task2.repository.UserRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public List<UserDTO> getAll() {
         List<User> userList = userRepository.findAll();
 
@@ -38,6 +40,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public ResponseEntity<UserDTO> getOne(Long id) {
         Optional<User> optionalUser = userRepository.findById(id);
 
